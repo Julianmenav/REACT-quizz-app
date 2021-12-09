@@ -41,7 +41,22 @@ function App() {
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      const answer = e.currentTarget.value;
+      const correct = questions[number].correct_answer === answer; //true or false
+      if (correct) {
+        setScore((prev) => prev + 1);
+      }
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
 
   const nextQuestion = () => {};
 
@@ -65,7 +80,10 @@ function App() {
           callback={checkAnswer}
         />
       ) : null}
-      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 ? (
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS - 1 ? (
         <button className="next" onClick={nextQuestion}>
           Next Question
         </button>
