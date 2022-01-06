@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import QuestionCard from "./components/QuestionCard";
 import { fetchQuizzQuestions, QuestionState } from "./API";
 import { Difficulty } from "./API";
+import { GlobalStyle } from "./app.styles";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -68,6 +69,8 @@ function App() {
   };
 
   return (
+    <>
+    <GlobalStyle />
     <div className="App">
       <h1>React Quizz</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
@@ -96,6 +99,7 @@ function App() {
         </button>
       ) : null}
     </div>
+    </>
   );
 }
 
