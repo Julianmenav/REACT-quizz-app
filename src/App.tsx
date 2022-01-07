@@ -72,7 +72,9 @@ function App() {
     <>
     <GlobalStyle />
     <Wrapper>
-      <h1>REACT QUIZZ APP</h1>
+      <div className="titleWrapper">
+        <h1>REACT QUIZZ APP</h1>
+      </div>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className="start" onClick={startTrivia}>
           Start
